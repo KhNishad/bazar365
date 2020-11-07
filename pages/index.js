@@ -6,6 +6,9 @@ import Products_category from '../components/Best_seller';
 import Deal_of_day from '../components/Deal_of_day';
 import Order_by_call from '../components/Order_by_call';
 
+
+
+
 export default function Home() {
   return (
     <div >
