@@ -4,7 +4,8 @@ import Product_Category from '../components/ProductsCategory';
 import Did_know_banner from '../components/DidKnowBanner';
 import Deal_of_day from '../components/DealOfDay';
 import Order_by_call from '../components/OrderByCall';
-import Best_seller from '../components/BestSeller';
+import Best_seller from '../components/productCart';
+import Best_seller_product from '../components/bestSellerProduct'
 
 
 
@@ -141,7 +142,8 @@ export default function Home() {
 
             <Did_know_banner/>
 
-            <section  className="section-container" style={{padding: "0px;", marginTop:" 10px;"}}>
+                <Best_seller_product/>
+            {/* <section  className="section-container" style={{padding: "0px;", marginTop:" 10px;"}}>
                   <div className="wrapper">
                       <div className="myflash  alert alert-dismissable speechwarning">
                       <div className="container text-center">
@@ -163,7 +165,7 @@ export default function Home() {
                       </div>
 
                  </main>
-            </section>
+            </section> */}
               {/* best_sell_pro.map(p => <Best_seller key={p.id} {...p}/>) */}
             
             < Deal_of_day/>

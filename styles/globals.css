@@ -33,6 +33,17 @@
     top: 170px;
     
    }
+   .fa-envelope:before {
+       margin-right: 5px;
+   }
+   .fa-mobile:before{
+       margin-right: 5px;
+   }
+   .login{
+    width: 420px;
+    left: 708px;
+    top: 170px;
+   }
   /* Homepage Wrappers */
  
   .main-content{

@@ -2,6 +2,7 @@
 import react ,{useState} from 'react';
 import Modal from  'react-modal';
 import RegModal from '../components/registerModal';
+import LoginModal from '../components/loginModal';
 
 
 
@@ -24,7 +25,7 @@ const Navbar = () => {
 
 
                      <Modal className='login_modal' isOpen={isOpen}>
-            
+                        <LoginModal setIsOpen = {setIsOpen}/>
                      </Modal>
                     
                     <div className="main_navigation_bar sticky">
