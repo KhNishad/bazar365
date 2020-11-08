@@ -1,61 +1,29 @@
-import Link from 'next/link';
-import Image from 'next/image';
+
 import react ,{useState} from 'react';
-import Modal from  'react-modal'
-import RegModal from  'react-modal'
+import Modal from  'react-modal';
+import RegModal from '../components/registerModal';
+
 
 
 Modal.setAppElement('#__next');
 
 const Navbar = () => {
-   
+ 
      const [isOpen, setIsOpen] = useState(false)
      const [isRegOpen, setRegOpen] = useState(false)
 
     return (
                 
-                <div>
+    <div>
+        
 
-                    <RegModal isOpen = {isRegOpen}>
-                           <div className="modal-dialog" role="document">
-                                <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span  onClick= {()=> setRegOpen(false)}  aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                  I am register modal
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button"  onClick= {()=> setRegOpen(false)}  className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary">Save changes</button>
-                                </div>
-                                </div>
-                           
-                            </div>
-                    </RegModal>
-                     <Modal isOpen={isOpen}>
-                    
-                            <div className="modal-dialog" role="document">
-                                <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span  onClick= {()=> setIsOpen(false)} aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                  I am login modal
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button"  onClick= {()=> setIsOpen(false)}  className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary">Save changes</button>
-                                </div>
-                                </div>
-                           
-                            </div>
+                    <Modal isOpen = {isRegOpen} className="register_modal"  >
+                         <RegModal setRegOpen = {setRegOpen}/>
+                    </Modal>
+
+
+
+                     <Modal className='login_modal' isOpen={isOpen}>
             
                      </Modal>
                     
@@ -98,7 +66,7 @@ const Navbar = () => {
                                     
                                     {/* <!-- Login --> */}
                                     <li ng-hide="" className="dropdown top-dropdown-color topbar-login">
-                                        <a className="loginbtn" ng-click="openLoginModal()" onClick= {()=> setIsOpen(true)}  style={{Color:"#000" }}>Login</a>
+                                        <a className="loginbtn" ng-click="openLoginModal()" onClick= {()=> setIsOpen(true)}  style={{color:"#000" }}>Login</a>
                                     </li>
                                     
                                     <li ng-hide="" className="dropdown top-dropdown-color">
@@ -113,7 +81,7 @@ const Navbar = () => {
                         </nav>
                     </div>
                 </div>
-                </div>
+     </div>
 
 )};
 

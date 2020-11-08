@@ -24,8 +24,15 @@
      padding: 10px;
     
  }
- 
- 
+
+
+   /*registration modal  */
+   .modal-content{
+    width: 480px;
+    left: 708px;
+    top: 170px;
+    
+   }
   /* Homepage Wrappers */
  
   .main-content{
@@ -350,7 +357,7 @@
        text-align: center;
        margin: 0 0 30px;
        font-family: 'DIN Pro';
-         font-weight: 400;
+       font-weight: 400;
    }
  
  
@@ -8544,7 +8551,7 @@
      border: 0;
      max-height: 60px;
      /* margin: -4px 16px -4px -16px; */
-     margin: 0px 17px -8px -42px
+     margin: 0px 17px -8px -29px
  }
  
  .navTglr .fa{
