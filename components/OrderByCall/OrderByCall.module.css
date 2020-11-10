@@ -1,0 +1,29 @@
+
+
+
+
+.section_container{
+    padding: 40px 0 0;
+}
+.h_v_center_align{
+    text-align: center;
+    padding: 30px 0;
+    background: #85a649;
+    border-radius: 10px;
+}
+.h_v_center_align span i{
+    font-size: 46px;
+}
+.awesome_contact_order{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fff;
+    font-size: 20px;
+}
+ 
+.order_call_text{
+ 
+    font-size: 30px;
+    color: #fff;
+    font-family: 'DIN pro';
+}

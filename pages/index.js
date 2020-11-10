@@ -1,11 +1,11 @@
 
 import Layout from '../components/Layout';
-import Product_Category from '../components/ProductsCategory';
-import Did_know_banner from '../components/DidKnowBanner';
-import Deal_of_day from '../components/DealOfDay';
-import Order_by_call from '../components/OrderByCall';
-import Best_seller from '../components/productCart';
-import Best_seller_product from '../components/bestSellerProduct'
+import Product_Category from '../components/ProductCategory/ProductsCategory';
+import Did_know_banner from '../components/DidKnowBanner/DidKnowBanner';
+import Deal_of_day from '../components/DealOfDay/DealOfDay';
+import Order_by_call from '../components/OrderByCall/OrderByCall';
+import Best_seller_product from '../components/BestSeller/bestSellerProduct'
+import styles from '../components/ProductCategory/productCategory.module.css';
 
 
 
@@ -127,7 +127,7 @@ export default function Home() {
     <div >
          <Layout>
            <main className='container'>
-           <h1 className="homepage-headings" style={{marginTop:'35px;', fontFamily:'DIN pro'}}>Product Categories</h1> 
+           <h1 className={styles.homepage_headings} style={{marginTop:'35px;', fontFamily:'DIN pro'}}>Product Categories</h1> 
                <div className='row d-flex justify-content-center'>
                {
                 products_cat.map(p =>
@@ -143,30 +143,7 @@ export default function Home() {
             <Did_know_banner/>
 
                 <Best_seller_product/>
-            {/* <section  className="section-container" style={{padding: "0px;", marginTop:" 10px;"}}>
-                  <div className="wrapper">
-                      <div className="myflash  alert alert-dismissable speechwarning">
-                      <div className="container text-center">
-                          <h3 style={{margin:"0;"}} className="homepage-headings">B365 Best Sellers</h3>
-                          <a  className="btn btn-success"  href="/products/featured_products" target="_self" >View All</a>
-                      </div>
-                      </div>
-                  </div>
-                  <main className='container'>
-          
-                      <div className='row d-flex justify-content-center'>
-                          {
-                            best_sell_pro.map(pro =>
-                              <div className='col-item' style={{flexGrow: 'inherit'}}>
-                            <Best_seller key={pro.id} {...pro}/>
-                            </div>
-                            )
-                            } 
-                      </div>
-
-                 </main>
-            </section> */}
-              {/* best_sell_pro.map(p => <Best_seller key={p.id} {...p}/>) */}
+         
             
             < Deal_of_day/>
             <Did_know_banner/>

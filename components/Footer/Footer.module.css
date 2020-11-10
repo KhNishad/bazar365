@@ -1,0 +1,214 @@
+
+
+
+
+.ftrTop{padding: 40px 0 20px; color: #fff;}
+.ftrTop a{
+    color: #0D1136;
+    font-size: 14px;
+    font-weight:500;
+    font-family: 'DIN pro';
+}
+.ftrTop .footer_logo_cont{
+    padding: 0px 20px;
+    text-align: center;
+    
+}
+
+.ftrTop .ftr_paymentmethod{
+    text-align: left;
+}
+.ftrTop .fCol{
+    width: 50%;
+}
+.ftr_hr_line{
+    border-top: 1px solid #CCE2A8;
+    /* margin-bottom: 50px; */
+}
+.ftrlogo img{max-height: 150px;}
+@media (max-width: 480px) {
+   
+    .ftrTop .fCol{
+        width: 50%;
+        padding: 20px;
+    }
+    .footer_copyright{
+        text-align: center;
+    }
+    .footer_credit{
+        text-align: center;
+        font-size: 12px;
+    }
+}
+.ftr_heading{
+    font-size: 20px;
+    color: #1a1a1a;
+    font-weight: 600;
+    font-family: 'DIN Pro';
+    margin: 0 0 5px;
+}
+.ftrTop .ftr_paymentmethod{
+    text-align: left;
+}
+.ftr_paymentmethod img{
+    width:100%; 
+}
+.ftr_heading{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'DIN Pro';
+    margin: 0 0 5px;
+}
+footer .footer_ssl_certificate{
+    text-align: center;
+}
+.ftrBtm{
+    background: #f7f7f7;
+  
+    padding: 5px 15px;
+    border-top: 1px solid #cde2a8;
+}
+.ftrBtm a{
+    color: #fff;
+}
+.footer_copyright{
+    color: #5bb746;
+    font-size: 15px;
+    font-weight: 500;
+}
+.footer_copyright{
+    text-align: left;
+    padding-left: 10px;
+}
+.social_icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.social_icon span{
+    padding-right: 15px;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 600;
+}
+footer .footer_social_icon{
+    width: 20px;
+    margin: 0 2px;
+}
+
+.facebook:hover i{
+    color: #3B5998;
+}
+.icon_btn {
+    background-color: #3B5998;
+    border-radius: 2rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.0rem;
+    height: 2rem;
+    line-height: 2rem;
+    margin: 0px;
+    position: relative;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 2rem;
+    margin-right: 2px;
+}
+.icon_btn2 {
+    background-color: #eb5b73;
+    border-radius: 2rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.0rem;
+    height: 2rem;
+    line-height: 2rem;
+    margin: 0px;
+    position: relative;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 2rem;
+    margin-right: 2px;
+}
+
+.icon_btn span {
+    border-radius: 0;
+    display: block;
+    height: 0;
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 0;
+}
+.icon_btn:hover span {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    margin: -1rem;
+}
+
+.icon_btn span {
+    background-color: #fff;
+}
+
+.icon_btn i {
+    background: none;
+    color: #ffffff;
+    height: 2rem;
+    left: 0;
+    line-height: 2rem;
+    position: absolute;
+    top: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 2rem;
+    z-index: 10;
+}
+
+.instagram{
+    /* background: #C13584; */
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+}
+.instagram:hover i{
+    color: #C13584;
+}
+.fa_instagram {
+    color: #fff;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  .footer_credit{
+    color: #6abd57;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: right;
+}
+footer .footer_credit{
+    text-align:right;
+    color: #0D1136;
+}
+
+@media (max-width: 480px) {
+   
+    .footer_credit{
+        text-align: center;
+        font-size: 12px;
+    }
+}

@@ -1,5 +1,5 @@
 import '../styles/custom_bootstrap.css';
-import '../styles/globals.css';
+// import '../styles/globals.css';
 
 
 

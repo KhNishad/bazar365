@@ -1,0 +1,57 @@
+
+.myflash{
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.section_container{
+    padding: 40px 0 0;
+}
+
+.top_bar_wrapper {
+    background: #fff;
+    height: 40px;
+}
+#dvcMbl.top_bar_wrapper{height:auto}
+.header_top{
+    float: right;
+}
+@media (max-width: 480px) {
+   
+
+    .homepage_headings, 
+    .homepage_headings h1{
+        font-size: 24px;
+    }
+}
+
+
+.homepage_headings,
+.homepage_headings h1{
+    padding: 20px;
+    font-size: 36px;
+    color: #0D1136;
+    text-align: center;
+    margin: 0 0 30px;
+    font-family: 'DIN Pro';
+    font-weight: 400;
+}
+ 
+.col_item {
+    width: 200px;
+    background: #ffffff;
+    text-align: center;
+    border: transparent;
+    position: relative;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 10px 5px;
+}
+
+@media(max-width:480px){
+    .col_item {
+        width: 100%;
+        margin:0;
+        padding:1px;
+    }
+}
+

@@ -1,0 +1,35 @@
+
+
+.pro_cat_back{
+    background-color: white;
+    border: 1px solid #CCE2A8;
+    margin: 5px 5px;
+    border-radius: 5px;
+    min-width:300px;
+}
+
+.pro_cat_back:hover{
+    transition: all 0.5s;
+    border: 1px solid #637D2C;
+}
+.product_name_style_1{
+    font-size: 24;
+    text-align: center;
+    color: #0D1136;
+    font-family: 'DIN Pro';
+    font-style: normal;
+    font-weight: 400;
+}
+.homepage_headings,
+.homepage_headings h1{
+    font-size: 36px;
+    color: #0D1136;
+    text-align: center;
+    margin: 0 0 30px;
+    font-family: 'DIN Pro';
+    font-weight: 400;
+}
+.homepage_headings, 
+.homepage_headings h1{
+    font-size: 24px;
+}

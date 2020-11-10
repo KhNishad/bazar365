@@ -1,4 +1,5 @@
-import Best_seller from './productCart';
+import Product_cart from '../../components/ProductCart/productCart';
+import styles from './BestSeller.module.css';
 
 
 const best_sell_pro = [
@@ -48,16 +49,17 @@ const best_sell_pro = [
     
     },
     
+    
     ]
 
 const BestSellerProduct = () =>{
 
     return (
-        <section  className="section-container" style={{padding: "0px;", marginTop:" 10px;"}}>
-        <div className="wrapper">
-            <div className="myflash  alert alert-dismissable speechwarning">
+        <section  className={styles.section_container} style={{padding: "0px;", marginTop:" 10px;",backgroundColor:'#F7F7F7'}}>
+        <div className={styles.wrapper}>
+            <div className={`${styles.myflash}  alert alert-dismissable speechwarning`}>
             <div className="container text-center">
-                <h3 style={{margin:"0;"}} className="homepage-headings">B365 Best Sellers</h3>
+                <h3 style={{margin:"0;"}} className={styles.homepage_headings}>B365 Best Sellers</h3>
                 <a  className="btn btn-success"  href="/products/featured_products" target="_self" >View All</a>
             </div>
             </div>
@@ -67,8 +69,8 @@ const BestSellerProduct = () =>{
             <div className='row d-flex justify-content-center'>
                 {
                   best_sell_pro.map(pro =>
-                    <div className='col-item' style={{flexGrow: 'inherit'}}>
-                  <Best_seller key={pro.id} {...pro}/>
+                    <div className={styles.col_item} style={{flexGrow: 'inherit'}}>
+                  < Product_cart key={pro.id} {...pro}/>
                   </div>
                   )
                   } 

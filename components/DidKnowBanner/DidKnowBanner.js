@@ -1,8 +1,8 @@
-import styles from '../styles/Home.module.css'
+import styles from './DidKnowBanner.module.css';
 
 const Did_know_Banner = () =>(
-    <section className="section-container">
-        <div className="container-fluid ftrAd">
+    <section className={styles.section_container}>
+        <div className={`container-fluid ${styles.ftrAd}`}>
         
                 <div className="row">
                 

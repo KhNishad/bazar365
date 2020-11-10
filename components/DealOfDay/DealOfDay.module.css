@@ -1,0 +1,52 @@
+
+
+
+
+ .section_container{
+    padding: 40px 0 0;
+    background-color: #F7F7F7;
+}
+.homepage_headings,
+.homepage_headings h1{
+    font-size: 36px;
+    color: #0D1136;
+    text-align: center;
+    margin: 0 0 30px;
+    font-family: 'DIN Pro';
+    font-weight: 400;
+}
+.deals_slider{
+    justify-content: center;
+    margin: 0;
+}
+
+.Promise.Category_container{
+    display:none;
+}
+.promise {
+    color: #999;
+}
+.Promise .container_fluid{
+    padding: 0px 15px;
+}
+.Promise.PromisePlus {
+    padding: 40px 40px 30px;
+}
+.Promise.PromisePlus {
+    padding: 40px 0px 30px;
+}
+@media (max-width: 320px){
+    .Promise.PromisePlus {
+        padding: 15px 0px 1px;
+    }
+}
+.slider {
+    width: 100%;
+}
+.slider .slick-slide {
+    margin: 0px 10px;
+}
+.slide_deals_poster{
+    width: auto;
+    height: auto;
+}

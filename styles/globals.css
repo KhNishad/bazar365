@@ -67,6 +67,7 @@
    }
  
    .sticky-mobile-topbar{
+       padding-right: 25px;
      position: fixed;
      background-color: #fff;
      top:0
@@ -523,6 +524,7 @@
      color: #858585;
  }
  .dropdown-menu.topdropdowntoggle li{
+     
      display: block;
      padding:2px 0;
  }
