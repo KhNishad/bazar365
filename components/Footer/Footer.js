@@ -72,7 +72,7 @@ const Footer = () =>(
                 {/* <!-- <a href="https://twitter.com/" className="icon-btn twitter"><i className="fa fa-twitter"></i><span></span></a>
                 <a href="https://linkedin.com/" className="icon-btn linkedin"><i className="fa fa-linkedin"></i><span></span></a>
                 <a href="https://youtube.com/" className="icon-btn youtube"><i className="fa fa-youtube"></i><span></span></a> --> */}
-                <a href="https://www.instagram.com/bazar365.store" className={styles.icon_btn2}><i className="fa fa-instagram"></i><span></span></a>
+                <a href="https://www.instagram.com/bazar365.store" className={styles.icon_btn2}><i className="fa fa-instagram" style={{marginLeft:'10px'}}></i><span></span></a>
             </div>
             <div className="col-sm-4">
                 <div className={styles.footer_credit} >Design & Developed by

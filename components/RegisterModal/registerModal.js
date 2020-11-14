@@ -1,16 +1,24 @@
 
+
+import styles from './RegisterModal.module.css'
+
+
 const RegModal = ({setRegOpen})=>(
 
-    <div className="modal-content"> 
-    <div className="modal-header">
-        <h5 className="modal-title">Register</h5> 
-        <button type="button"  onClick= {()=> setRegOpen(false)} className="close" ng-click="closeRegisterModal()"> 
+    <div className={styles.register}>
+
+  
+
+    <div className={styles.modal_content}> 
+    <div className={styles.modal_header}>
+        <h5 className={styles.modal_title}>Register</h5> 
+        <button type="button"  onClick= {()=> setRegOpen(false)} className={styles.close} ng-click="closeRegisterModal()"> 
             <i className="fa fa-times"></i> 
         </button> 
     </div>
-<div className="modal-body">
-<div className="signup-form">
-<p className="hint-text">Create your account. It's free and only takes a minute.</p>
+<div className={styles.modal_body}>
+<div className={styles.signup_form}>
+<p className={styles.hint_text}>Create your account. It's free and only takes a minute.</p>
 <form name="registerForm" noValidate="" ng-submit="registerForm.$valid &amp;&amp; user.password==user.confirmPassword &amp;&amp; registerByEmail()"   className="ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-pattern"> 
 <div className="form-group">
     <input type="text" className="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="first_name"  ng-model="user.first_name" placeholder="Full Name" required=""/>
@@ -59,6 +67,7 @@ const RegModal = ({setRegOpen})=>(
         
     <div className="text-center">Already have an account? 
     <a href="" ng-click="closeRegisterOpenLoginModal()" style={{color:"blue"}}>Sign in</a>
+</div>
 </div>
 </div>
 </div>

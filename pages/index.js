@@ -6,6 +6,8 @@ import Deal_of_day from '../components/DealOfDay/DealOfDay';
 import Order_by_call from '../components/OrderByCall/OrderByCall';
 import Best_seller_product from '../components/BestSeller/bestSellerProduct'
 import styles from '../components/ProductCategory/productCategory.module.css';
+import dealsStyle from '../components/DealOfDay/DealOfDay.module.css'
+import didKnwStyles from '../components/DidKnowBanner/DidKnowBanner.module.css'
 
 
 
@@ -121,32 +123,117 @@ const best_sell_pro = [
 
 ]
 
+const did_u_knw_banner1 = [
+  {
+    id : 1,
+    img : '/img/did-you-know-banner-2-fb735a11-6141-4610-8cb6-ac14d8c57a8d.png'
+  },
+  {
+    id : 2,
+    img : '/img/did-you-know-banner-d25fb0cd-63a3-4001-af9a-cc0b1e84bda8.png'
+  },
+  
+]
+
+const did_u_knw_banner2 = [
+  {
+    id : 1,
+    img : '/img/did-you-know-banner-2-fb735a11-6141-4610-8cb6-ac14d8c57a8d.png'
+  },
+ 
+  
+]
+
+const DealsOfDay = [
+  {
+    id : 1,
+    img: '/img/redeem-coins-5ecba244-e9d3-4681-9cac-7e25a95889cf.png'
+  },
+  {
+    id : 2,
+    img: '/img/10-discount-d0e6f757-3688-463e-8893-14f07802db78.png'
+  }
+] 
+// get img size for each column in did u know banner
+let size1  = did_u_knw_banner1.length;
+let size2  = did_u_knw_banner2.length;
+// console.log(size);
 
 export default function Home() {
   return (
-    <div >
+    <div  style={{margin:'2px'}}>
          <Layout>
            <main className='container'>
-           <h1 className={styles.homepage_headings} style={{marginTop:'35px;', fontFamily:'DIN pro'}}>Product Categories</h1> 
-               <div className='row d-flex justify-content-center'>
-               {
-                products_cat.map(p =>
-                  <div className='col' style={{flexGrow: 'inherit'}}>
-                <Product_Category  key={p.id} {...p}/>
-                </div>
-                )
-                } 
-               </div>
+                <h1 className={styles.homepage_headings} style={{marginTop:'35px;', fontFamily:'DIN pro',fontSize:'35px'}}>Product Categories</h1> 
+                    <div className='row d-flex justify-content-center'>
+                    {
+                      products_cat.map(p =>
+                        <div className='col' style={{flexGrow: 'inherit'}}>
+                      <Product_Category  key={p.id} {...p}/>
+                      </div>
+                      )
+                      } 
+                  </div>
            </main>
           
+               {/* did u knoow banner section1 */}
+               <section className={didKnwStyles.section_container}>
+              <div className={`container-fluid ${didKnwStyles.ftrAd}`}>
+        
+               <div className="row" >
+                  {
 
-            <Did_know_banner/>
+                      did_u_knw_banner2.map(img =>
+                      
+                      <Did_know_banner key={img.id} size={size2} {...img}/>
+                      
+                    )
+                    } 
+                    
+                </div>
+        
+            </div>
+         </section>
 
-                <Best_seller_product/>
+                <Best_seller_product  product ={best_sell_pro}/>
          
+             {/* deals of the day section */}
+                  <section   className={dealsStyle.section_container}>
+                  <h1 className={dealsStyle.homepage_headings}>
+                      {/* <!-- dynamic text --> */}
+                      Deals Of the Day
+                  </h1>
+                          <div  className={`row  ${dealsStyle.container_fluid, dealsStyle.deals_slider, dealsStyle.Promise, dealsStyle.PromisePlus} `} style={{padding:"0;", justifyContent:'center'}}>
+                            {
+                              DealsOfDay.map(img => 
+                    
+                              
+                              <Deal_of_day key={img.id} {...img}/>
+                              )
+                              }
+
+                        </div>
+                </section>
             
-            < Deal_of_day/>
-            <Did_know_banner/>
+           {/* did u knoow banner section2 */}
+           <section className={didKnwStyles.section_container}>
+              <div className={`container-fluid ${didKnwStyles.ftrAd}`}>
+        
+               <div className="row" >
+                  {
+
+                      did_u_knw_banner1.map(img =>
+                      
+                      <Did_know_banner key={img.id} size={size1} {...img}/>
+                      
+                    )
+                    } 
+                    
+                </div>
+        
+            </div>
+         </section>
+           
             <Order_by_call/>
          </Layout>
          

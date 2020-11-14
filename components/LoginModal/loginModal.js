@@ -1,5 +1,6 @@
 import React , {useState} from 'react';
 import {Link} from 'next/link';
+import styles from './LoginModal.module.css'
 
 
 
@@ -9,15 +10,17 @@ const LoginModal = ({setIsOpen}) => {
     const [hide, setHide] = useState(false)
 
     return (
+        <div className='login'>
 
-        <div className="modal-content login">
-        <div className="modal-header">
-             <h5 className="modal-title" id="exampleModalCenterTitle">Login</h5>
+       
+        <div className={`${styles.modal_content} ${styles.login}`}>
+        <div className={styles.modal_header}>
+             <h5 className={styles.modal_title} id="exampleModalCenterTitle">Login</h5>
               <button type="button" onClick={()=> setIsOpen(false)} className="close" ng-click="closeLoginModal()">
                    <i className="fa fa-times"></i>
                 </button> 
                </div>
-               <div className="modal-body"> 
+               <div className={styles.modal_body}> 
                    <div className="pt-3 pb-3"> 
                        <button onClick={()=> hide?setHide(false): setHide(true)} ng-click="typeChange()" type="button" className="btn btn-block btn-lg btn-outline-secondary"> 
 
@@ -42,7 +45,7 @@ const LoginModal = ({setIsOpen}) => {
 
                         }
                                 </div>
-                                <div className="separator">or</div>
+                                <div className={styles.separator}>or</div>
                                 {
                                       hide?
                                   
@@ -52,7 +55,7 @@ const LoginModal = ({setIsOpen}) => {
                                                  {/* <span className="error ng-hide" ng-show="(emailLoginForm.email.$dirty || emailLoginForm.$submitted)&amp;&amp;emailLoginForm.email.$error.pattern">invalid email</span>  */}
                                                  <div className="input-group mb-3"> 
                                                      <div className="input-group-prepend">
-                                                          <div className="input-group-text"> <i className="fa fa-envelope"></i> </div>
+                                                          <div className="input-group-text"> <i className={"fa fa-envelope"}></i> </div>
                                                       </div>
                                                       <input type="email" ng-model="user.email" pattern="^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$" className="form-control form-control-lg ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" autoComplete="new-password" name="email" placeholder="Enter Email" required=""/>
                                                    </div>
@@ -69,7 +72,7 @@ const LoginModal = ({setIsOpen}) => {
                                                       </button> 
                                                   </div>
                                                   <div>
-                                                      <a style={{marginRight:'85px'}} href='#'>Forgot Password?</a>
+                                                      <a style={{marginRight:'30px'}} href='#'>Forgot Password?</a>
                                                       <span>New Member? <a href="#">Register</a> here</span>
                                                   </div>
                                            </form>
@@ -125,31 +128,32 @@ const LoginModal = ({setIsOpen}) => {
                                                            </div>  */}
                                                    </div>
                                                    {/* <!-- ngIf: isEmail --> */}
-                                                   <div className="separator">or</div>
+                                                   <div className={styles.separator}>or</div>
                                                    <div style={{margin:"auto"}}> 
-                                                       <div className="g-sign-in-button" ng-click="googleInit()"> 
-                                                           <div className="content-wrapper"> 
-                                                               <div className="logo-wrapper"> 
+                                                       <div className={styles.g_sign_in_button} ng-click="googleInit()"> 
+                                                           <div className={styles.content_wrapper}> 
+                                                               <div className={styles.logo_wrapper}> 
                                                                    <img src="https://developers.google.com/identity/images/g-logo.png"/> 
                                                                </div>
-                                                               <span className="text-container"> 
+                                                               <span className={styles.text_container}> 
                                                                <span>Sign in with Google</span>
                                                                </span>
                                                            </div>
                                                        </div>
                                                    </div>
                                                    <div style={{margin:"auto"}}>
-                                                       <div className="g-sign-in-button" ng-click="facebookInit()" style={{backgroundColor: "#3B5998"}}> 
-                                                          <div className="content-wrapper"> 
-                                                               <div className="logo-wrapper">
+                                                       <div className={styles.g_sign_in_button} ng-click="facebookInit()" style={{backgroundColor: "#3B5998"}}> 
+                                                          <div className={styles.content_wrapper}> 
+                                                               <div className={styles.logo_wrapper}>
                                                                     <img src="/img/facebook-logo.png"/>
                                                                </div>
-                                                               <span className="text-container"> 
+                                                               <span className={styles.text_container}> 
                                                                <span>Sign in with Facebook</span> 
                                                                </span> 
                                                          </div>
                                                        </div>
                                                    </div>
+                                    </div>
                                     </div>
     )
 }
