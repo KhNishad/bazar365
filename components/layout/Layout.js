@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Navbar from '../../components/navBar/Navbar';
 import Footer from '../../components/Footer/Footer';
-import Banner from '../../components/BannerMain';
+import Banner from '../../components/mainBanner/BannerMain';
 import SideNav from '../../components/sideNav/sideNav'
 import { Fragment } from 'react';
 import react ,{useState} from 'react';

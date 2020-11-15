@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.css'
+import styles from './mainBanner.module.css'
 
 const Banner = () =>(
     <section className={styles.container}>

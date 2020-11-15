@@ -4,8 +4,6 @@ const SideNav = ({margin}) =>{
 
 return (
 
- 
-    
   
     <div className={`${styles.page_wrapper} ${styles.chiller_theme} ${styles.toggled}` } id={styles.show_sidebar }>
     
