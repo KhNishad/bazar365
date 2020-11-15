@@ -67,14 +67,21 @@ const BestSellerProduct = ({product}) =>{
         <main className='container'>
 
             <div className='row d-flex justify-content-center'>
+             
+                    
+                
                 {
                   product.map(pro =>
-                    <div className={styles.col_item} style={{flexGrow: 'inherit'}}>
-                  < Product_cart key={pro.id} {...pro}/>
+                    <div className={styles.prodItm}>
+                            <div className={styles.col_item} style={{flexGrow: 'inherit'}}>
+                                < Product_cart key={pro.id} {...pro}/>
+                            </div>
                   </div>
                   )
                   } 
+
             </div>
+        
 
        </main>
   </section>

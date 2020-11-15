@@ -1,0 +1,10 @@
+
+.BodyMargin{
+    margin-left: 220px;
+    transition: margin-left .7s;
+
+}
+.noMargin{
+    margin-left: 0;
+    transition: margin-left 0.7s;
+}

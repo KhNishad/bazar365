@@ -1,5 +1,5 @@
 
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import Product_Category from '../components/ProductCategory/ProductsCategory';
 import Did_know_banner from '../components/DidKnowBanner/DidKnowBanner';
 import Deal_of_day from '../components/DealOfDay/DealOfDay';
@@ -159,9 +159,10 @@ let size1  = did_u_knw_banner1.length;
 let size2  = did_u_knw_banner2.length;
 // console.log(size);
 
-export default function Home() {
+
+export default function Home({posts}) {
   return (
-    <div  style={{margin:'2px'}}>
+    <div className = 'container-fluid'  style={{backgroundColor:'#F7F7F7'}}>
          <Layout>
            <main className='container'>
                 <h1 className={styles.homepage_headings} style={{marginTop:'35px;', fontFamily:'DIN pro',fontSize:'35px'}}>Product Categories</h1> 
@@ -239,4 +240,18 @@ export default function Home() {
          
     </div>
   )
+}
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch('https://jsonplaceholder.typicode.com/users')
+  const posts = await res.json()
+
+  // By returning { props: posts }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  }
 }

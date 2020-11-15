@@ -9,12 +9,12 @@ import styles from  './Navbar.module.css'
 
 Modal.setAppElement('#__next');
 
-const Navbar = () => {
+const Navbar = ({sideNavF}) => {
  
      const [isOpen, setIsOpen] = useState(false)
      const [isRegOpen, setRegOpen] = useState(false)
      const [isLogin, setisLogin] = useState(false)
-
+     
     return (
                 
     <div>
@@ -37,9 +37,10 @@ const Navbar = () => {
                             {/* {/ <!-- Brand logo --> /} */}
                             
                             <div className={styles.navbar_header} style={{width:"20%;"}}>
-                                <a className={styles.navTglr_stickyBar} id="btnToggleLeft">
+                                <a className={styles.navTglr_stickyBar} onClick = {sideNavF} id="btnToggleLeft">
                                     <span className="fa fa-bars fa-lg" style={{color:'white'}}></span>
                                 </a>
+
                                 <a href="/" className={styles.stickyLogo} target="_self"><img src="/img/bazar365-logo.png" alt="logo"/></a>
                             </div>
                             <div className={styles.topbar_header_right} style={{width:"80%;"}}>

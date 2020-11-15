@@ -1,12 +1,39 @@
 import Head from 'next/head';
-import Navbar from '../components/navBar/Navbar';
-import Footer from '../components/Footer/Footer';
-import Banner from './BannerMain';
+import Navbar from '../../components/navBar/Navbar';
+import Footer from '../../components/Footer/Footer';
+import Banner from '../../components/BannerMain';
+import SideNav from '../../components/sideNav/sideNav'
+import { Fragment } from 'react';
+import react ,{useState} from 'react';
+import styles from './layout.module.css'
 
 
 
-const Laayout = (props) => (
-  <div>
+const Laayout = (props) => {
+
+  const [sideNav, setsideNav] = useState(false)
+  const [margin, setmargin] = useState(false)
+ 
+
+  const sideNavF  = ()=>{
+    margin ? setmargin(false) : setmargin(true)
+    sideNav ? setsideNav(false) : setsideNav(true)
+   
+    
+  }
+  
+   return (
+
+   
+
+  <Fragment>
+
+     
+      <Navbar sideNavF={sideNavF} />
+      <SideNav margin={margin}/>
+
+   
+  <div className={sideNav ? styles.BodyMargin : styles.noMargin}>
     <Head>
       <title>Bazar365</title>
       <link rel="shortcut icon" href="/img/favicon.ico" />
@@ -22,7 +49,8 @@ const Laayout = (props) => (
         
     </Head>
     <div>
-        <Navbar/>
+        
+      
         <Banner/>
         <div>
            {props.children}
@@ -30,8 +58,9 @@ const Laayout = (props) => (
         <Footer/>
       </div>
     </div>
+    </Fragment>
   
    
-);
+   )};
 
 export default Laayout;

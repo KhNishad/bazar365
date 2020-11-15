@@ -6,7 +6,7 @@ const Did_know_Banner = ({img,id,size}) =>(
         
     //             <div className="row" >
                 
-                        <div className={`col-${12/size}`} style={{padding:" 0;",flexGrow: 'inherit'}}id ={id}>
+                        <div  style={{padding:" 0;",flexGrow: 'inherit', width:`${100/size}%`}}id ={id}>
                             {/* <!-- <a href="<%-x.adlink%>" target="_self"> --> */}
                                 <img src={img} alt="" style={{width: "100%;"}}/>
                               

@@ -4,7 +4,8 @@ function allFunction(){
 
     return {
         getProduct : function(){
-            request("/product")
+            // request("/product")
+            request("/user")
         },
         productCount : function(){
 
