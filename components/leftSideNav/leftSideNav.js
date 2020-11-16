@@ -1,4 +1,4 @@
-import styles from './sideNav.module.css'
+import styles from './leftSideNav.module.css'
 
 const SideNav = ({margin}) =>{
 
@@ -21,7 +21,7 @@ return (
               </li>
               <li className={styles.sidebar_dropdown}>
                 <a href="#">
-                  <i className="fa fa-shopping-cart"></i>
+                  <i className="fa fa-shopping-cart"> </i>
                   <span>Dashboard</span>
                  
                 </a>

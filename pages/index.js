@@ -6,8 +6,18 @@ import Deal_of_day from '../components/DealOfDay/DealOfDay';
 import Order_by_call from '../components/OrderByCall/OrderByCall';
 import Best_seller_product from '../components/BestSeller/bestSellerProduct'
 import styles from '../components/ProductCategory/productCategory.module.css';
-import dealsStyle from '../components/DealOfDay/DealOfDay.module.css'
-import didKnwStyles from '../components/DidKnowBanner/DidKnowBanner.module.css'
+import dealsStyle from '../components/DealOfDay/DealOfDay.module.css';
+import didKnwStyles from '../components/DidKnowBanner/DidKnowBanner.module.css';
+import categories from '../services/productCategories';
+
+
+
+const allcats = categories.getProductCategories()
+// console.log('index',allcats);
+// promise.all()
+
+
+
 
 
 
@@ -158,6 +168,8 @@ const DealsOfDay = [
 let size1  = did_u_knw_banner1.length;
 let size2  = did_u_knw_banner2.length;
 // console.log(size);
+
+
 
 
 export default function Home({posts}) {

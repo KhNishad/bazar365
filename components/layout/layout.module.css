@@ -1,10 +1,21 @@
 
 .BodyMargin{
     margin-left: 220px;
-    transition: margin-left .7s;
+    transition: margin-left 0.7s;
 
 }
 .noMargin{
     margin-left: 0;
     transition: margin-left 0.7s;
+}
+
+.rightSideMargin{
+
+    margin-right: 300px;
+    transition: margin-right 0.7s;
+}
+.noRightSideMargin{
+    margin-right: 0px;
+    transition: margin-right 0.7s;
+    
 }

@@ -3,13 +3,14 @@ import react ,{useState} from 'react';
 import Modal from  'react-modal';
 import RegModal from '../../components/RegisterModal/registerModal';
 import LoginModal from '../../components/LoginModal/loginModal';
-import styles from  './Navbar.module.css'
+import styles from  './Navbar.module.css';
+import CartModal from '../../components/cartModal/cartModal';
 
 
 
 Modal.setAppElement('#__next');
 
-const Navbar = ({sideNavF}) => {
+const Navbar = ({leftSideNavF}) => {
  
      const [isOpen, setIsOpen] = useState(false)
      const [isRegOpen, setRegOpen] = useState(false)
@@ -24,8 +25,6 @@ const Navbar = ({sideNavF}) => {
                          <RegModal setRegOpen = {setRegOpen}/>
                     </Modal>
 
-
-
                      <Modal className='login_modal' isOpen={isOpen}>
                         <LoginModal setIsOpen = {setIsOpen}/>
                      </Modal>
@@ -37,7 +36,7 @@ const Navbar = ({sideNavF}) => {
                             {/* {/ <!-- Brand logo --> /} */}
                             
                             <div className={styles.navbar_header} style={{width:"20%;"}}>
-                                <a className={styles.navTglr_stickyBar} onClick = {sideNavF} id="btnToggleLeft">
+                                <a className={styles.navTglr_stickyBar} onClick = {leftSideNavF} id="btnToggleLeft">
                                     <span className="fa fa-bars fa-lg" style={{color:'white'}}></span>
                                 </a>
 

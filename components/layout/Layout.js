@@ -2,25 +2,39 @@ import Head from 'next/head';
 import Navbar from '../../components/navBar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import Banner from '../../components/mainBanner/BannerMain';
-import SideNav from '../../components/sideNav/sideNav'
+import LeftSideNav from '../leftSideNav/leftSideNav'
 import { Fragment } from 'react';
 import react ,{useState} from 'react';
-import styles from './layout.module.css'
+import styles from './layout.module.css';
+import Cart from '../../components/cart/cart';
+import RightSideNav  from '../../components/rightSideNav/rightSideNav';
+import CartModal from '../../components/cartModal/cartModal';
 
 
 
 const Laayout = (props) => {
 
-  const [sideNav, setsideNav] = useState(false)
+
+  // left side nav bar
+  const [leftSideNav, setleftSideNav] = useState(false)
   const [margin, setmargin] = useState(false)
  
 
-  const sideNavF  = ()=>{
+  const leftSideNavF  = ()=>{
     margin ? setmargin(false) : setmargin(true)
-    sideNav ? setsideNav(false) : setsideNav(true)
-   
+    leftSideNav ? setleftSideNav(false) : setleftSideNav(true)
     
   }
+  // right side nav 
+  const [rightSideNav, setrightSideNav] = useState(false)
+  const [rightMargin, setrightMargin] = useState(true)
+
+  const rightSideNavF = ()=> {
+    rightSideNav ? setrightSideNav(false) : setrightSideNav(true)
+    rightMargin ? setrightMargin(false) : setrightMargin(true)
+
+  }
+
   
    return (
 
@@ -29,11 +43,17 @@ const Laayout = (props) => {
   <Fragment>
 
      
-      <Navbar sideNavF={sideNavF} />
-      <SideNav margin={margin}/>
+      <Navbar leftSideNavF={leftSideNavF} />
+
+      <LeftSideNav margin={margin}/>
+
+      <RightSideNav rightMargin = {rightMargin}  rightSideNavF={rightSideNavF}/>
 
    
-  <div className={sideNav ? styles.BodyMargin : styles.noMargin}>
+  <div className={`${leftSideNav ? styles.BodyMargin : styles.noMargin}`}>
+    <div className={` ${rightSideNav ? styles.rightSideMargin : styles.noRightSideMargin}`}>
+      
+    
     <Head>
       <title>Bazar365</title>
       <link rel="shortcut icon" href="/img/favicon.ico" />
@@ -48,16 +68,19 @@ const Laayout = (props) => {
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         
     </Head>
-    <div>
+        <div>
         
       
-        <Banner/>
-        <div>
-           {props.children}
-        </div>
-        <Footer/>
+          <Banner/>
+          <Cart rightSideNavF= {rightSideNavF}/>
+              <div>
+                  {props.children}
+             </div>
+          <Footer/>
+
       </div>
-    </div>
+      </div>
+  </div>
     </Fragment>
   
    
