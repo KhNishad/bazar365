@@ -1,6 +1,6 @@
 import styles  from './rightSideNav.module.css';
 import Modal from  'react-modal';
-import CartModal from '../../components/cartModal/cartModal';
+import CartModal from '../CartModal/CartModal';
 import react ,{useState} from 'react';
 
 

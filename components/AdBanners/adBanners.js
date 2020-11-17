@@ -1,6 +1,6 @@
 // import styles from './DidKnowBanner.module.css';
 
-const Did_know_Banner = ({img,id,size}) =>(
+const adBanners = ({img,id,size}) =>(
     // <section className={styles.section_container}>
     //     <div className={`container-fluid ${styles.ftrAd}`}>
         
@@ -21,4 +21,4 @@ const Did_know_Banner = ({img,id,size}) =>(
 //    </section>
 
 );
-export default  Did_know_Banner;
+export default  adBanners;

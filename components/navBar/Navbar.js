@@ -1,10 +1,10 @@
 
 import react ,{useState} from 'react';
 import Modal from  'react-modal';
-import RegModal from '../../components/RegisterModal/registerModal';
-import LoginModal from '../../components/LoginModal/loginModal';
+import RegModal from '../RegisterModal/RegisterModal';
+import LoginModal from '../LoginModal/LoginModal';
 import styles from  './Navbar.module.css';
-import CartModal from '../../components/cartModal/cartModal';
+import CartModal from '../CartModal/CartModal';
 
 
 

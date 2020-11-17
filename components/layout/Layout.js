@@ -1,18 +1,18 @@
 import Head from 'next/head';
-import Navbar from '../../components/navBar/Navbar';
-import Footer from '../../components/Footer/Footer';
-import Banner from '../../components/mainBanner/BannerMain';
-import LeftSideNav from '../leftSideNav/leftSideNav'
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
+import Banner from '../mainBanner/BannerMain';
+import LeftSideNav from '../LeftSideNav/LeftSideNav'
 import { Fragment } from 'react';
 import react ,{useState} from 'react';
 import styles from './layout.module.css';
-import Cart from '../../components/cart/cart';
-import RightSideNav  from '../../components/rightSideNav/rightSideNav';
-import CartModal from '../../components/cartModal/cartModal';
+import Cart from '../Cart/Cart';
+import RightSideNav  from '../RightSideNav/RightSideNav';
+import CartModal from '../CartModal/CartModal';
 
 
 
-const Laayout = (props) => {
+const Laayout = ({children, categories}) => {
 
 
   // left side nav bar
@@ -45,7 +45,7 @@ const Laayout = (props) => {
      
       <Navbar leftSideNavF={leftSideNavF} />
 
-      <LeftSideNav margin={margin}/>
+      <LeftSideNav margin={margin} categories={categories}/>
 
       <RightSideNav rightMargin = {rightMargin}  rightSideNavF={rightSideNavF}/>
 
@@ -57,10 +57,10 @@ const Laayout = (props) => {
     <Head>
       <title>Bazar365</title>
       <link rel="shortcut icon" href="/img/favicon.ico" />
-
+    
       <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
-
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -74,7 +74,7 @@ const Laayout = (props) => {
           <Banner/>
           <Cart rightSideNavF= {rightSideNavF}/>
               <div>
-                  {props.children}
+                  {children}
              </div>
           <Footer/>
 

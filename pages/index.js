@@ -1,20 +1,24 @@
 
-import Layout from '../components/layout/Layout';
-import Product_Category from '../components/ProductCategory/ProductsCategory';
-import Did_know_banner from '../components/DidKnowBanner/DidKnowBanner';
+import Layout from '../components/Layout/Layout';
+import Product_Category from '../components/Categories/Categories';
+import AdBanners from '../components/AdBanners/adBanners';
 import Deal_of_day from '../components/DealOfDay/DealOfDay';
 import Order_by_call from '../components/OrderByCall/OrderByCall';
-import Best_seller_product from '../components/BestSeller/bestSellerProduct'
-import styles from '../components/ProductCategory/productCategory.module.css';
+import Best_seller_product from '../components/BestSeller/BestSeller';
+
+import styles from '../components/Categories/Categories.module.css';
 import dealsStyle from '../components/DealOfDay/DealOfDay.module.css';
-import didKnwStyles from '../components/DidKnowBanner/DidKnowBanner.module.css';
-import categories from '../services/productCategories';
+import didKnwStyles from '../components/AdBanners/adBanners.module.css';
 
 
+// calling from services
+import categoriesServices from '../services/categoryService';
+import productservices from '../services/productService';
+// import adBanners from '../components/adBanners/adBanners';
 
-const allcats = categories.getProductCategories()
-// console.log('index',allcats);
-// promise.all()
+
+// import Req from '../utils/request';
+
 
 
 
@@ -164,6 +168,8 @@ const DealsOfDay = [
     img: '/img/10-discount-d0e6f757-3688-463e-8893-14f07802db78.png'
   }
 ] 
+
+
 // get img size for each column in did u know banner
 let size1  = did_u_knw_banner1.length;
 let size2  = did_u_knw_banner2.length;
@@ -172,17 +178,22 @@ let size2  = did_u_knw_banner2.length;
 
 
 
-export default function Home({posts}) {
+export default function Home({categories,products}) {
+  // console.log(categories[0].category_image);
+  // console.log(products);
+  
+
+   
   return (
     <div className = 'container-fluid'  style={{backgroundColor:'#F7F7F7'}}>
-         <Layout>
+         <Layout  categories={categories}>
            <main className='container'>
                 <h1 className={styles.homepage_headings} style={{marginTop:'35px;', fontFamily:'DIN pro',fontSize:'35px'}}>Product Categories</h1> 
                     <div className='row d-flex justify-content-center'>
                     {
-                      products_cat.map(p =>
+                      categories.map(category =>
                         <div className='col' style={{flexGrow: 'inherit'}}>
-                      <Product_Category  key={p.id} {...p}/>
+                      <Product_Category  key={category.id} {...category}/>
                       </div>
                       )
                       } 
@@ -198,8 +209,8 @@ export default function Home({posts}) {
 
                       did_u_knw_banner2.map(img =>
                       
-                      <Did_know_banner key={img.id} size={size2} {...img}/>
-                      
+                      <AdBanners key={img.id} size={size2} {...img}/>
+                          // <adBanners />
                     )
                     } 
                     
@@ -208,7 +219,8 @@ export default function Home({posts}) {
             </div>
          </section>
 
-                <Best_seller_product  product ={best_sell_pro}/>
+                {/* <Best_seller_product  product ={best_sell_pro}/> */}
+                <Best_seller_product products={products}/>
          
              {/* deals of the day section */}
                   <section   className={dealsStyle.section_container}>
@@ -237,7 +249,7 @@ export default function Home({posts}) {
 
                       did_u_knw_banner1.map(img =>
                       
-                      <Did_know_banner key={img.id} size={size1} {...img}/>
+                      <AdBanners key={img.id} size={size1} {...img}/>
                       
                     )
                     } 
@@ -253,17 +265,23 @@ export default function Home({posts}) {
     </div>
   )
 }
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const res = await fetch('https://jsonplaceholder.typicode.com/users')
-  const posts = await res.json()
 
-  // By returning { props: posts }, the Blog component
-  // will receive `posts` as a prop at build time
+
+export async function getServerSideProps() {
+ 
+  // const res = await fetch('https://jsonplaceholder.typicode.com/users')
+  // console.log('f');
+  const categories = await categoriesServices.getProductCategories()
+  const products = await productservices.getProducts()
+  // const posts = await res.json()
+  // console.log('from index',categories[0].category_title);
+  // console.log("type of posts", typeof posts);
+  
+
   return {
     props: {
-      posts,
+      categories,
+      products,
     },
   }
 }
