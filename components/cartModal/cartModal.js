@@ -4,6 +4,7 @@ import Modal from  'react-modal';
 const CartModal = ({setIsOpen})=>{
 
     return (
+        <div className="modal show" id="deliveryChargeModal" tabindex="-1" aria-labelledby="exampleModalLabel" style={{display: "block", paddingRight: "5px"}}> 
         <div className={`${styles.modal_dialog} modal-dialog-centered`}> 
             <div className={styles.modal_content}>
                 <div className="modal-header ">
@@ -19,7 +20,7 @@ const CartModal = ({setIsOpen})=>{
                     </div>
                 </div>
         </div>
-
+    </div>
     )
 }
 export default CartModal;

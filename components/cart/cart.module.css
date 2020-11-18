@@ -55,3 +55,9 @@
         box-shadow: none;
     }
 /* } */
+
+@media (max-width:480px){
+  .cart_btn{
+ display: none;
+  }
+}

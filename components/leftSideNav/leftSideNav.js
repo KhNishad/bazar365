@@ -1,12 +1,28 @@
-import styles from './leftSideNav.module.css'
+import styles from './leftSideNav.module.css';
+import react ,{useState} from 'react';
 
 const LeftSideNav = ({margin,categories}) =>{
 
-return (
-
-
+    const [showSubCat, setshowSubCat] = useState(false)
+    // const [Arrow, setArrow] = useState('right')
     
-  
+
+    const showSubCatF = (id) =>
+    {
+        if(showSubCat === id){
+            setshowSubCat(false)
+            // setArrow('right')
+            
+        }else{
+            setshowSubCat(id)
+            // setArrow('down')
+        }
+        
+
+      
+    }
+
+return (
 
         <div id="leftsidebar" className={`${styles.left_sidebar} ${margin ? styles.posMargin : styles.negMargin}`} > 
         <div className={styles.sidebar_links}>
@@ -33,27 +49,42 @@ return (
                         <li className="ee_ac"> 
                             <img className={styles.ee_cat_icon} src={`http://test.bazar365.store${category.category_icon}`} width="20px" height="20px"    alt="category-icon"/> 
                             <span style={{verticalAlign: "middle"}}>
-                                  <a className={`ee_cat ${styles.ee_sidebarActive} ${styles.category_slug}`} data-slug="baby-care" id="" href="#"  target="_self">{category.category_title}
-                                      <strong style={{float: "right"}}> <i id="" className="catrighticon fa fa-angle-right " aria-hidden="true"> </i> 
-                                      </strong> 
+                                  <a  onClick={()=>showSubCatF(category.id)} className={`ee_cat ${styles.ee_sidebarActive} ${styles.category_slug}`} data-slug="baby-care" id="" href="#"  target="_self">{category.category_title}
+                                    
+                                     { showSubCat === category.id?
+                                         <strong style={{float: "right"}}>
+                                              <i id="" className="catrighticon fa fa-angle-down" aria-hidden="true"> </i> 
+                                         </strong> 
+                                         : 
+                                          <strong style={{float: "right"}}>
+                                            <i id="" className="catrighticon fa fa-angle-right" aria-hidden="true"> </i> 
+                                         </strong> 
+                                     }
+                                         
                                 </a>
                             </span> 
-                            <ul className={''} id={styles.ee_subCat}> 
+                           
+
                            {
+                             showSubCat === category.id?
                              category.children.map((subCategory)=>
+                             <ul className={styles.ee_subCat} > 
                                 <li>
                                    <span style={{verticalAlign: "middle"}}>
-                                    <a className={styles.category_slug} data-slug="baby-food" id="cat_5f622157788a24543b6451fa_baby-food" href="/category/baby-food" target="_self">
+                                    <a className={styles.category_slug} data-slug="baby-food" id="" href="#" target="_self">
                                        {subCategory.category_title}
                                       </a> 
                                   </span>
                               </li>
+                            </ul> 
+                             
                              )
+                             :null
                             
                            }
                           
                           
-                       </ul> 
+                   
                          
                    </li>
                         )

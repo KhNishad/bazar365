@@ -13,8 +13,10 @@ import didKnwStyles from '../components/AdBanners/adBanners.module.css';
 
 // calling from services
 import categoriesServices from '../services/categoryService';
-import productservices from '../services/productService';
-// import adBanners from '../components/adBanners/adBanners';
+import productServices from '../services/productService';
+import addBanners from '../services/addBannerService';
+
+
 
 
 // import Req from '../utils/request';
@@ -178,15 +180,16 @@ let size2  = did_u_knw_banner2.length;
 
 
 
-export default function Home({categories,products}) {
+export default function Home({categories,products,Banners}) {
   // console.log(categories[0].category_image);
   // console.log(products);
+  // console.log(Banners.firstImage);
   
 
    
   return (
     <div className = 'container-fluid'  style={{backgroundColor:'#F7F7F7'}}>
-         <Layout  categories={categories}>
+         <Layout  categories={categories} mainManner={Banners}>
            <main className='container'>
                 <h1 className={styles.homepage_headings} style={{marginTop:'35px;', fontFamily:'DIN pro',fontSize:'35px'}}>Product Categories</h1> 
                     <div className='row d-flex justify-content-center'>
@@ -272,7 +275,9 @@ export async function getServerSideProps() {
   // const res = await fetch('https://jsonplaceholder.typicode.com/users')
   // console.log('f');
   const categories = await categoriesServices.getProductCategories()
-  const products = await productservices.getProducts()
+  const products = await productServices.getProducts()
+  const Banners = await addBanners.getAddBanners()
+ 
   // const posts = await res.json()
   // console.log('from index',categories[0].category_title);
   // console.log("type of posts", typeof posts);
@@ -282,6 +287,7 @@ export async function getServerSideProps() {
     props: {
       categories,
       products,
+      Banners,
     },
   }
 }

@@ -1,10 +1,10 @@
 import styles from './mainBanner.module.css'
 
-const Banner = () =>(
+const Banner = ({image}) =>(
     <section className={styles.container}>
 
            
-         <img width="100%" src="/img/website-banner-b7c82322-f108-479a-80ff-6f0236ed453b.png" alt="Banner" className="img-responsive"/>
+         <img width="100%" src={`http://test.bazar365.store${image.firstImage}`} alt="Banner" className="img-responsive"/>
 
    </section> 
 

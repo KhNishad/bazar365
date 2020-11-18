@@ -11,9 +11,13 @@ const RightSideNav = ({rightMargin, rightSideNavF}) =>{
     return (
 
     <div>
-         <Modal isOpen = {isOpen} className={`${styles.ccc}`}>
-            <CartModal setIsOpen={setIsOpen}/>
-         </Modal>
+          {
+              isOpen?
+                 <CartModal setIsOpen={setIsOpen}/>
+                 :null
+          }
+           
+        
 
 
         <div id="rightsidebar" className={`${rightMargin ? styles.navMargin : styles.noNavMargin} ${styles.right_sidebar} ${styles.right_sidebar_active} `}> 

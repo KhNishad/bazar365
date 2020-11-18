@@ -6,7 +6,7 @@ module.exports = {
     getProductCategories: async function () {
         const data = await request('/product/getcategorytree')
 
-        // console.log(data.data.categoryTree[0].category_title);
+        // console.log("mydattaaaa",data.data.categoryTree[0]);
         return data.data.categoryTree;
     },
 

@@ -10,7 +10,8 @@ const LoginModal = ({setIsOpen}) => {
     const [hide, setHide] = useState(false)
 
     return (
-        <div className='login'>
+ <div className="modal show" data-backdrop="static" data-keyboard="false" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style={{paddingRight: "5px", display: "block"}}> 
+          <div className={`${styles.modal_dialog} modal-dialog-centered`} role="document">
 
        
         <div className={`${styles.modal_content} ${styles.login}`}>
@@ -154,7 +155,9 @@ const LoginModal = ({setIsOpen}) => {
                                                        </div>
                                                    </div>
                                     </div>
-                                    </div>
+                            </div>
+                        </div>
+                            
     )
 }
 export default LoginModal;

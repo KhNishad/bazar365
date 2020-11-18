@@ -8682,15 +8682,9 @@
      .ftr .footer-credit{text-align: inherit;}
      .ftr .nav > li:not(:first-child)::before{content: '|'; display: inline-block; padding-right:5px;}
      .ftr .nav > li > a{display: inline;}
- }
  
- @media (max-width: 768px){
-     .slickWrap{padding:15px 30px;}
-     body{
-         overflow-x: hidden;
-         padding-bottom: 64px;
-         /*padding-bottom: 120px;*/
-     }
+
+
      .top-bar-add-to-cart{
          float: right;
          margin: 1px;

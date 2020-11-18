@@ -127,7 +127,7 @@
   margin-left: -16px;
 }
 .category {
-  padding-top: 12px;
+  /* padding-top: 12px; */
   margin: 0;
   z-index: 1;
   background: white;
@@ -248,25 +248,17 @@
     font-weight: bold;
 }
 
-#ee_subCat{
-  display: none;
-  list-style: none;
-  text-transform: capitalize;
-}
+
 .ee_subCat{
-  display: none;
+ 
   list-style: none;
   text-transform: capitalize;
-  padding: 6px 0 2px 0px;
+  padding: 0px 0 2px 0px;
   margin-left: 21px;
   border-left: 1px dashed #ccc;
 }
-#ee_subCat li:last-child{
-  border: none;
-}
-.ee_subCat{
-  display: none;
-}
+
+
 .category li.ee_active a.ee_sidebarActive{
   color: #d8ab28;
 }

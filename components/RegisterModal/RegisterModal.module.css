@@ -1,6 +1,6 @@
 
 .register{
-    z-index: 999;
+    /* z-index: 999; */
     width: 420px;
     text-align: center;
     position: relative;
@@ -14,7 +14,7 @@
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 114%;
+    width: 100%;
     pointer-events: auto;
     background-color: #fff;
     background-clip: padding-box;

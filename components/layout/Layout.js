@@ -12,7 +12,7 @@ import CartModal from '../CartModal/CartModal';
 
 
 
-const Laayout = ({children, categories}) => {
+const Laayout = ({children, categories, mainManner}) => {
 
 
   // left side nav bar
@@ -71,7 +71,7 @@ const Laayout = ({children, categories}) => {
         <div>
         
       
-          <Banner/>
+          <Banner  image={mainManner}/>
           <Cart rightSideNavF= {rightSideNavF}/>
               <div>
                   {children}
