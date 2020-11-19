@@ -269,11 +269,10 @@ export default function Home({categories,products,Banners}) {
   )
 }
 
+// get methods 
 
 export async function getServerSideProps() {
  
-  // const res = await fetch('https://jsonplaceholder.typicode.com/users')
-  // console.log('f');
   const categories = await categoriesServices.getProductCategories()
   const products = await productServices.getProducts()
   const Banners = await addBanners.getAddBanners()

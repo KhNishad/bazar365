@@ -1,16 +1,85 @@
 import React , {useState} from 'react';
 import {Link} from 'next/link';
-import styles from './LoginModal.module.css'
+import styles from './LoginModal.module.css';
+import { useForm } from "react-hook-form";
+import { Alert } from 'react-bootstrap';
+import axios from 'axios';
+import LoginService from '../../services/loginService';
 
 
 
 
 const LoginModal = ({setIsOpen}) => {
 
-    const [hide, setHide] = useState(false)
+   
+    // const { register, handleSubmit, errors } = useForm();
 
+    const [ShowEmail, setShowEmail] = useState(false)
+    const [ShowPhone, setShowPhone] = useState(true)
+    const [otpShow, setotpShow] = useState(false)
+    const [showEmailPhoneBtn, setshowEmailPhoneBtn] = useState(false)
+
+    const ShowPhoneOrEmailF = ()=>{
+        if(ShowEmail){
+            setShowPhone(true)
+            setShowEmail(false)
+        }else{
+            setShowPhone(false)
+            setShowEmail(true)
+        }
+        setotpShow(false)
+        showEmailPhoneBtn?setshowEmailPhoneBtn(false):setshowEmailPhoneBtn(true)
+    }
+
+ 
+
+
+
+     // post operation
+
+  const changehandler= (e)=>{
+        setphoneNum({[e.target.name] : e.target.value})
+            }
+   
+  const  submitHandler = (e)=>{
+      setShowEmail(false)
+      setShowPhone(false)
+     otpShow?setotpShow(false):setotpShow(true)
+
+
+
+     
+     LoginService.userLogin(phoneNum)
+     e.preventDefault()
+
+    // axios.post('http://192.168.0.17:3000/term/nishad',phoneNum)
+    // .then(res =>{
+    // console.log(res);
+    // })
+    // .catch(err =>{
+    //  console.log(err);
+    // })
+    // export async function getServerSideProps() {
+ 
+
+     
+       
+       
+        // const posts = await res.json()
+        // console.log('from index',categories[0].category_title);
+        // console.log("type of posts", typeof posts);
+        
+        console.log('fffffffffffffffffffff',phoneNum);
+    
+    //   }
+}
+            
+        const [phoneNum, setphoneNum] = useState('')
+   
     return (
- <div className="modal show" data-backdrop="static" data-keyboard="false" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style={{paddingRight: "5px", display: "block"}}> 
+
+
+       <div className="modal show" data-backdrop="static" data-keyboard="false" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style={{paddingRight: "5px", display: "block"}}> 
           <div className={`${styles.modal_dialog} modal-dialog-centered`} role="document">
 
        
@@ -23,22 +92,24 @@ const LoginModal = ({setIsOpen}) => {
                </div>
                <div className={styles.modal_body}> 
                    <div className="pt-3 pb-3"> 
-                       <button onClick={()=> hide?setHide(false): setHide(true)} ng-click="typeChange()" type="button" className="btn btn-block btn-lg btn-outline-secondary"> 
+                       <button onClick={ShowPhoneOrEmailF} ng-click="typeChange()" type="button" className="btn btn-block btn-lg btn-outline-secondary"> 
 
                          
                            {
-                               hide?
+                               showEmailPhoneBtn?
                                 <span  ng-show="!isEmailButton" className="ng-hide">
                                 <i className="fa fa-mobile" style={{marginRight:'5px'}}>
                                     Login with Phone number
                                 </i>
                                 </span>
                                 : 
+                                
                                  <span ng-show="isEmailButton">
                                 <i className="fa fa-envelope" style={{marginRight:'5px'}}>
                                     Login with Email
                                 </i> 
                             </span>
+                            
                            }
                                
                         </button>
@@ -47,8 +118,11 @@ const LoginModal = ({setIsOpen}) => {
                         }
                                 </div>
                                 <div className={styles.separator}>or</div>
+                                
+
+                              
                                 {
-                                      hide?
+                                      ShowEmail?
                                   
                                           <div ng-show="isEmail" className="ng-hide">
                                           <form name="emailLoginForm" ng-submit="emailLoginForm.$valid &amp;&amp; emailLogin()" novalidate="" className="ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern"> 
@@ -79,55 +153,69 @@ const LoginModal = ({setIsOpen}) => {
                                            </form>
                                         </div>
                                         :
+                                          ShowPhone?
                                         <div ng-show="isPhone"> 
-                                        <form name="phoneLoginForm" ng-submit="phoneLoginForm.$valid &amp;&amp; sendPhoneOtp()" novalidate="novalidate" className="ng-pristine ng-invalid ng-invalid-required ng-valid-pattern"> 
-                                            <div className="text-center p-3">
-                                                 <p>PLEASE ENTER YOUR MOBILE PHONE NUMBER</p>
-                                               </div>
-                                               {/* <span className="error ng-hide" ng-show="(phoneLoginForm.phone.$touched || phoneLoginForm.$submitted)&amp;&amp;phoneLoginForm.phone.$error.required">phone number is required</span>
-                                                <span className="error ng-hide" ng-show="(phoneLoginForm.phone.$touched || phoneLoginForm.$submitted)&amp;&amp;phoneLoginForm.phone.$error.pattern">Please enter a valid bangladeshi number. e.g. 01612793518</span>  */}
+                                                <form name="phoneLoginForm" onSubmit={submitHandler} novalidate="novalidate" className="ng-pristine  ng-invalid ng-invalid-required ng-valid-pattern"> 
+                                                    <div className="text-center p-3">
+                                                        <p>PLEASE ENTER YOUR MOBILE PHONE NUMBER</p>
+                                                    </div>
+                                                    {/* <span className={styles.error} show="(phoneLoginForm.phone.$touched || phoneLoginForm.$submitted)&amp;&amp;phoneLoginForm.phone.$error.required">phone number is required</span>
+                                                        <span className="error ng-hide" ng-show="(phoneLoginForm.phone.$touched || phoneLoginForm.$submitted)&amp;&amp;phoneLoginForm.phone.$error.pattern">Please enter a valid bangladeshi number. e.g. 01612793518</span>  */}
                                                 <div className="input-group mb-3">
                                                      <div className="input-group-prepend">
                                                           <div className="input-group-text"> +88 </div>
                                                        </div>
-                                                       <input type="text" pattern="^(01\d{9})$" ng-model="user.phone" className="form-control form-control-lg ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern" name="phone" placeholder="e.g 01612793518" required=""/> 
+                                                       <input value={phoneNum[0]} onChange = {changehandler} type="text" pattern="^(01\d{9})$" className="form-control form-control-lg" name="userName" placeholder="e.g 01612793518"  required/> 
                                                    </div>
                                                    <div className="form-group"> 
                                                        <button type="submit" className="btn btn-outline-success btn-block btn-lg"> Sign up/Log in </button> 
                                                    </div>
                                                </form>
                                             </div>
+                                            :null
+                                           
                                             
 
                                 }
+                                
                            
-                                     
-                                                        {/* <div ng-show="isOtp" className="ng-hide">
-                                                           <form name="otpForm" ng-submit="otpForm.$valid &amp;&amp; phoneLogin()" novalidate="" className="ng-pristine ng-invalid ng-invalid-required">
-                                                                  <div className="text-center p-3"> 
-                                                                      <p className="ng-binding"> We’ve sent a 4-digit one time PIN to your phone:</p>
-                                                                   </div>
-                                                                   <span className="error ng-hide" ng-show="(otpForm.otp.$touched || otpForm.$submitted)&amp;&amp;otpForm.otp.$error.required">OTP is required</span> 
-                                                                   <div className="input-group mb-3">
-                                                                           <div className="input-group-prepend"> 
-                                                                               <div className="input-group-text">
-                                                                                   <i className="fa fa-key"></i>
-                                                                               </div>
-                                                                           </div>
-                                                                           <input type="number" name="otp" ng-model="user.otp" className="form-control form-control-lg ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" autocomplete="new-password" placeholder="Please enter 4 digit OTP" required=""/> 
-                                                                   </div>
-                                                                    <div className="form-group">
-                                                                       <button type="submit" className="btn btn-success btn-lg" style={{fontSize:"17px"}}   ng-disabled="!phoneLoginBtnNotPressed || otpForm.$invalid" disabled="disabled"> 
-                                                                          <span ng-hide="!phoneLoginBtnNotPressed">ENTER</span>  ngIf: !phoneLoginBtnNotPressed 
-                                                                        </button>
-                                                                       <button ng-disabled="isResend" type="button" ng-click="resendPhoneOtp()" className="btn btn-secondary btn-lg" style={{fontSize:"17px"}}> 
-                                                                           <span ng-show="isResend" className="ng-binding ng-hide">Request PIN Again(99)</span> 
-                                                                           <span ng-show="!isResend">SEND AGAIN</span>
-                                                                       </button>
-                                                                   </div>
-                                                               </form>
-                                                           </div>  */}
-                                                   </div>
+                                     {/* otp section starts */}
+                                     {
+                                         otpShow?
+                                          <div  className="">
+                                          <form name="otpForm" ng-submit="otpForm.$valid &amp;&amp; phoneLogin()" novalidate="" className="ng-pristine ng-invalid ng-invalid-required">
+                                                <div className="text-center p-3"> 
+                                     <p className=""> We’ve sent a 4-digit one time PIN to your phone:{phoneNum[0]}</p>
+                                                 </div>
+                                                 {/* <span className={styles.error} ng-show="(otpForm.otp.$touched || otpForm.$submitted)&amp;&amp;otpForm.otp.$error.required">OTP is required</span>  */}
+                                                 <div className="input-group mb-3">
+                                                         <div className="input-group-prepend"> 
+                                                             <div className="input-group-text">
+                                                                 <i className="fa fa-key"></i>
+                                                             </div>
+                                                         </div>
+                                                         <input type="number" name="otp" ng-model="user.otp" className="form-control form-control-lg" autoComplete="new-password" placeholder="Please enter 4 digit OTP" required=""/> 
+                                                 </div>
+                                                  <div className="form-group">
+                                                     <button  type="submit" className="btn btn-success btn-lg" style={{fontSize:"17px",marginRight:'5px'}}   ng-disabled="!phoneLoginBtnNotPressed || otpForm.$invalid" disabled="disabled"> 
+                                                        <span ng-hide="!phoneLoginBtnNotPressed">ENTER</span>
+                                                      </button>
+                                                     <button ng-disabled="isResend" type="button" ng-click="resendPhoneOtp()" className="btn btn-secondary btn-lg" style={{fontSize:"17px"}}> 
+                                                         {/* <span ng-show="isResend" className="ng-binding ng-hide">Request PIN Again(99)</span>  */}
+                                                         <span ng-show="!isResend">SEND AGAIN</span>
+                                                     </button>
+                                                 </div>
+                                             </form>
+                                         </div> 
+                                         :null
+                                     }
+                                                       
+                                       {/* otp section starts */}
+
+
+
+
+                                </div>
                                                    {/* <!-- ngIf: isEmail --> */}
                                                    <div className={styles.separator}>or</div>
                                                    <div style={{margin:"auto"}}> 
@@ -160,4 +248,6 @@ const LoginModal = ({setIsOpen}) => {
                             
     )
 }
+
 export default LoginModal;
+

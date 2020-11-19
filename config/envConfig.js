@@ -1,7 +1,9 @@
 
 
-const localAPI = "http://192.168.0.114:1337/api/v1"
+// const localAPI = "http://192.168.0.10:1337/api/v1"
+// const LoginAPI = "http://192.168.0.17:3000/term/nishad"
 
 module.exports = {
-    localAPI
+    localAPI: "http://192.168.0.10:1337/api/v1",
+    LoginAPI: "http://192.168.0.17:3000/term",
 }

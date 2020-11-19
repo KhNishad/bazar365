@@ -24,47 +24,25 @@ const Best_seller = ({
       </div>
       <div className={styles.overlay}>
         <div className={styles.divoverlay}>
-          <h3 className={(styles.priceshow, styles.hide)} id="<%= x.id %>"></h3>
-          <h3 className={(styles.quantityshow, styles.hide)}></h3>
-          <h3
-            className={(styles.addtocartshow, styles.show)}
-            ng-click="CartsWidget()"
-            style={{ marginTop: "40%" }}
-          >
-            Add to cart
-          </h3>
+            <h3 className={`${styles.priceshow} ${styles.show}`} id="<%= x.id %>">13</h3>
+            <h3 className={`${styles.quantityshow} ${styles.show}`}>11</h3>
+            <h3 className={`${styles.addtocartshow} ${styles.hide}`} ng-click="CartsWidget()" style={{ marginTop: "40%" }} >
+              Add to cart
+            </h3>
         </div>
         {/* <!--View details--> */}
-        <a
-          className={`${styles.btnshow} lozad`}
-          href="/product/<%= x.productSlug %>"
-          target="_self"
-        >
+        <a className={`${styles.btnshow} lozad`} href="/product/<%= x.productSlug %>"  target="_self" >
           Show Details
         </a>
         {/* <!--modal-open-end--> */}
         <div className={(styles.incrementDecriment, styles.hide)}>
-          <span
-            style={{ fontSize: "24px" }}
-            ng-click="ee_decrementFunc('<%= x.id %>',0)"
-            className={styles.incrementspan}
-          >
-            <i
-              className={`fa fa-minus-circle ${styles.AddtoCartButtonIcon}`}
-              aria-hidden="true"
-            ></i>
+          <span style={{ fontSize: "24px" }} ng-click="ee_decrementFunc('<%= x.id %>',0)" className={styles.incrementspan}>
+            <i  className={`fa fa-minus-circle ${styles.AddtoCartButtonIcon}`} aria-hidden="true"></i>
           </span>
         </div>
         <div className={(styles.incrementDecrimentright, styles.hide)}>
-          <span
-            style={{ fontSize: "24px" }}
-            ng-click="ee_incrementFunc('<%= x.id %>')"
-            className={styles.decrementspan}
-          >
-            <i
-              className={`fa fa-plus-circle ${styles.AddtoCartButtonIcon}`}
-              aria-hidden="true"
-            ></i>
+          <span style={{ fontSize: "24px" }} ng-click="ee_incrementFunc('<%= x.id %>')" className={styles.decrementspan}>
+             <i className={`fa fa-plus-circle ${styles.AddtoCartButtonIcon}`} aria-hidden="true"></i>
           </span>
         </div>
       </div>
