@@ -13,7 +13,7 @@ const LoginModal = ({setIsOpen}) => {
 
    
     // const { register, handleSubmit, errors } = useForm();
-
+    // form control
     const [ShowEmail, setShowEmail] = useState(false)
     const [ShowPhone, setShowPhone] = useState(true)
     const [otpShow, setotpShow] = useState(false)
@@ -42,14 +42,16 @@ const LoginModal = ({setIsOpen}) => {
             }
    
   const  submitHandler = (e)=>{
+    //   form control
       setShowEmail(false)
       setShowPhone(false)
      otpShow?setotpShow(false):setotpShow(true)
+    
 
 
 
-     
-     LoginService.userLogin(phoneNum)
+
+    //  LoginService.userLogin(phoneNum)
      e.preventDefault()
 
     // axios.post('http://192.168.0.17:3000/term/nishad',phoneNum)
@@ -69,7 +71,7 @@ const LoginModal = ({setIsOpen}) => {
         // console.log('from index',categories[0].category_title);
         // console.log("type of posts", typeof posts);
         
-        console.log('fffffffffffffffffffff',phoneNum);
+        // console.log('fffffffffffffffffffff',phoneNum);
     
     //   }
 }
@@ -185,7 +187,7 @@ const LoginModal = ({setIsOpen}) => {
                                           <div  className="">
                                           <form name="otpForm" ng-submit="otpForm.$valid &amp;&amp; phoneLogin()" novalidate="" className="ng-pristine ng-invalid ng-invalid-required">
                                                 <div className="text-center p-3"> 
-                                     <p className=""> We’ve sent a 4-digit one time PIN to your phone:{phoneNum[0]}</p>
+                                     <p className=""> We’ve sent a 4-digit one time PIN to your phone: {phoneNum.userName}</p>
                                                  </div>
                                                  {/* <span className={styles.error} ng-show="(otpForm.otp.$touched || otpForm.$submitted)&amp;&amp;otpForm.otp.$error.required">OTP is required</span>  */}
                                                  <div className="input-group mb-3">
