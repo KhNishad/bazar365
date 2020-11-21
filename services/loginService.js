@@ -1,5 +1,6 @@
 import request2 from "../utils/request2";
-import config from '../config/envConfig';
+import config from '../config/envConfig'; 
+import cors from 'cors';
 
 
  
