@@ -2,6 +2,9 @@ import React , {useState} from 'react';
 import {Link} from 'next/link';
 import styles from './LoginModal.module.css';
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router-dom';
+import { useRouter, useEffect } from 'next/router'
+import Timer from './Timer'
 
 // import { Alert } from 'react-bootstrap';
 import axios from 'axios';
@@ -23,41 +26,14 @@ const LoginModal = ({setIsOpen}) => {
      const [isEmailOtp, setisEmailOtp] = useState(false)
      const [passPlaceHolder, setpassPlaceHolder] = useState('')
      const [emailOtpPass, setemailOtpPass] = useState(true)
-
-
-     const onSubmit = data =>{
-
-        setphoneNum(data)
-
+     const [UserEmail, setUserEmail] = useState('')
+     const [userOtp, setuserOtp] = useState('')
+   
     
-        setShowEmail(false)
-        setShowPhone(false)
-        otpShow?setotpShow(false):setotpShow(true)
+     const router = useRouter()
 
-    //    LoginService.userLogin(data)
-    //    console.log("possstDattt====",data);
+     const ShowPhoneOrEmailF = ()=>{
 
-        //  axios.post('https://jsonplaceholder.typicode.com/posts',data2)
-         axios.post('http://192.168.0.103:3000/user/login',data)
-        .then(res =>{
-        console.log(res);
-        })
-        .catch(err =>{
-        console.log(err);
-        })
-       
-     }
-     const phoneOtpSubmit = data =>{
-          
-     const NumberAndOtp = {
-         username : phoneNum.userName,
-         otp : data.otp
-     }
-        axios.post('https://jsonplaceholder.typicode.com/posts',NumberAndOtp)
-     }
-
-
-    const ShowPhoneOrEmailF = ()=>{
         if(ShowEmail){
             setShowPhone(true)
             setShowEmail(false)
@@ -69,45 +45,154 @@ const LoginModal = ({setIsOpen}) => {
         showEmailPhoneBtn?setshowEmailPhoneBtn(false):setshowEmailPhoneBtn(true)
     }
 
-    // submit mail
-  const onSubmitMail = data =>{
-    //   console.log("passsssssssss",data);
-    setshowPasswordField(true)
-    axios.post('http://192.168.0.103:3000/user/login',data)
-    .then(res =>{
-        if(res.data.status == 'emailAlreadyExist'){
-            setisEmailOtp(false)
-            
-            setpassPlaceHolder('password')
-        }
-        else if('createUser'){
-            setisEmailOtp(true)
-            setpassPlaceHolder('otp')
-        }
-     
-     
+
+    // form onSubmit
+
+     const onSubmit = data =>{
+
+        setphoneNum(data)
+      
+
+    
+        setShowEmail(false)
+        setShowPhone(false)
+        otpShow?setotpShow(false):setotpShow(true)
+
+    //    LoginService.userLogin(data)
+   
+         axios.post('http://192.168.0.14:8000/user/login',data)
+        .then(res =>{
+        console.log(res);
         })
         .catch(err =>{
         console.log(err);
         })
-        // console.log('Email',data.otp);
-  }
-  const onSubmitMailOtp = data =>{
-    axios.post('http://192.168.0.103:3000/user/login',data)
-    .then(res =>{
-        
-        setpassPlaceHolder('password')
-        // setisEmailOtp(false)
-        // setemailOtpPass(true)
-        // showPasswordField(false)
-        // setShowEmail(false)
-        setemailOtpPass(false)
-        console.log("email otppp submit===",res);
+       
+     }
+    //  submit phone and otp
+     const phoneOtpSubmit = data =>{
+          
+     const NumberAndOtp = {
+         contactNumber : phoneNum.contactNumber,
+         otpCode : data.otp
+     }
+        axios.post('http://192.168.0.14:8000/user/login',NumberAndOtp)
+        router.push('/products')
+     }
 
+
+
+
+    // submit mail
+  const onSubmitMail = data =>{
+
+     setUserEmail(data.email)
+    setshowPasswordField(true)
+    axios.post('http://192.168.0.14:8000/user/login',data)
+    .then(res =>{
+        if(res.data.status == 'oldUser'){
+            setisEmailOtp(false)
+            setpassPlaceHolder('PASSWORD')
+        }
+        else if('newUser'){
+            setisEmailOtp(true)
+            setpassPlaceHolder('OTP')
+        }
+        })
+        .catch(err =>{
+        console.log(err);
+        })
+       
+  }
+
+//   submit mail otp
+  const onSubmitMailOtp = data =>{
+
+    // email otp password 
+  
+
+   let  PASSWORD1 = data.password1;
+   let  PASSWORD2 = data.password2;
+  
+
+  
+//  send maill otp and new password
+   if(PASSWORD1){
+       if(PASSWORD1 === PASSWORD2)
+    
+       {
+       
+      
+        const  emailPassOtp = {
+            email : UserEmail,
+            newPassword: PASSWORD1,
+            otpCode : userOtp
+        }
+        // console.log("passsssddddddddddddddddddddddd",emailPassOtp);
+        axios.post('http://192.168.0.14:8000/user/login',emailPassOtp)
+        .then(res =>{
+         
+            
+            if(data.OTP){
+                setemailOtpPass(false)
+            }
+             setisEmailOtp(false)
+             router.push('/products')
+        })
+      .catch(err =>{
+        console.log(err);
+      })
+       }else{
+           console.log("passsssssworddddd   DID Not Matched");
+       }
+       
+   }
+
+
+//    send mail and password
+   else if(UserEmail && data.PASSWORD){
+  
+       const emailPassword = {
+           email : UserEmail,
+           newPassword : data.PASSWORD
+       }
+    
+       axios.post('http://192.168.0.14:8000/user/login',emailPassword)
+       .then(res =>{
+
+        
+        if(data.OTP){
+            setemailOtpPass(false)
+        }
+         setisEmailOtp(false)
+
+         router.push('/products')
     })
   .catch(err =>{
-
+    console.log(err);
   })
+   }
+
+//    send mail and otp
+   if(data.OTP && !PASSWORD1){
+    setuserOtp(data.OTP)
+   
+    const emailOtp = {
+        email : UserEmail,
+        otpCode : data.OTP
+    }
+    axios.post('http://192.168.0.14:8000/user/login',emailOtp)
+    .then(res =>{
+        
+        if(data.OTP){
+            setemailOtpPass(false)
+        }
+         setisEmailOtp(false)
+
+    })
+}
+
+    
 }
 
 
@@ -166,34 +251,37 @@ const LoginModal = ({setIsOpen}) => {
                                                 {  showPasswordField?
                                                  <form onSubmit={handleSubmit(onSubmitMailOtp)} name="emailPasswordFrom"  className=""> 
 
-                                                    {isEmailOtp?
-                                                    null
-                                                    
-                                                    // <div className="text-center p-3">
-                                                    //    <p>PLEASE ENTER YOUR OTP CODE</p>
-                                                    // </div>
-                                                    :
-                                                    <div className="text-center p-3">
-                                                       <p>PLEASE ENTER YOUR PASSWORD</p>
-                                                    </div>
-
-                                                }
+                                                   
                                                    {emailOtpPass?
-
+                                                      
                                                        <div>
+                                                            <div className="text-center p-3">
+                                                               <p>PLEASE ENTER YOUR {passPlaceHolder}</p>
+                                                           </div>
+
                                                             <div className="input-group mb-3"> 
-                                                            <div className="input-group-prepend">
-                                                                <div className="input-group-text"> <i className="fa fa-lock"></i> </div>
+                                                                    <div className="input-group-prepend">
+                                                                        <div className="input-group-text"> <i className="fa fa-lock"></i> </div>
+                                                                    </div>
+                                                                    <input ref={register({required: true})}  type="password" autoComplete="new-password" className="form-control form-control-lg" name={passPlaceHolder} placeholder={`Enter Your ${passPlaceHolder}`} required=""/> 
                                                             </div>
-                                                            <input ref={register({required: true})}  type="password" autoComplete="new-password" className="form-control form-control-lg" name={passPlaceHolder} placeholder={`Enter Your ${passPlaceHolder}`} required=""/> 
-                                                            </div>
+                                                            {passPlaceHolder !== 'OTP'?
+                                                                  <div className={`mb-2 ${styles.forgotPass}`}>
+                                                                    <a>FORGOT PASSWORD?</a>
+                                                                  </div>
+                                                                  :null
+                                                            }
+                                                          
                                                        </div>
                                                        
                                                        :
+                                                       
                                                        <div>
                                                             <div className="text-center p-3">
-                                                                <p>PLEASE ENTER YOUR PASSWORD</p>
-                                                          </div>
+                                                            <p>PLEASE ENTER YOUR PASSWORD</p>
+                                                            </div>
+                                                         <div>
+                                                          
                                                              <div className="input-group mb-3">
                                                                         <div className="input-group-prepend"> 
                                                                             <div className="input-group-text">
@@ -202,9 +290,10 @@ const LoginModal = ({setIsOpen}) => {
                                                                         </div>
                                                                     
 
-                                                                        <input ref={register({required: true})} type="text" name="password1" className="form-control form-control-lg" autoComplete="new-password" placeholder="Please enter Password" required=""/> 
+                                                                        <input ref={register({required: true})} type="password" name="password1" className="form-control form-control-lg" autoComplete="new-password" placeholder="Please enter Password" required=""/> 
                                                          
                                                             </div>
+                                                          
 
                                                             <div className="input-group mb-3">
                                                                     <div className="input-group-prepend"> 
@@ -214,19 +303,36 @@ const LoginModal = ({setIsOpen}) => {
                                                                     </div>
                                                                 
 
-                                                                    <input ref={register({required: true})} type="text" name="password2" className="form-control form-control-lg" autoComplete="new-password" placeholder="Please Re-enter Password" required=""/> 
+                                                                    <input ref={register({required: true})} type="password" name="password2" className="form-control form-control-lg" autoComplete="new-password" placeholder="Please Re-enter Password" required=""/> 
                                                                     
                                                             </div>
                                                        </div>
+                                                     </div>
                                                    }
                                                    
-                                                    {/* re enter pass */}
+                                                   
                                 
                                                     <div className="form-group">
-                                                      <button type="submit" className="btn btn-outline-success btn-block btn-lg" > 
-                                                      <span ng-hide="!emailLoginBtnNotPressed"> Log in</span> 
+                                                        {isEmailOtp?
+                                                           <div className="form-group">
+                                                           <button  type="submit" className="btn btn-success btn-lg" style={{fontSize:"17px",marginRight:'5px'}}   > 
+                                                               <span>SEND</span>
+                                                           </button>
+                                                           <button type="button" className="btn btn-secondary btn-lg" style={{fontSize:"17px"}}> 
+                                                                <span ng-show="isResend" className="ng-binding ng-hide">Request PIN Again(99)</span>  
+                                                               {/* <span ng-show="!isResend">SEND AGAIN</span> */}
+                                                          </button>
+                                                         </div>
+
+                                                        :
+                                                        <button type="submit" className="btn btn-outline-success btn-block btn-lg" > 
+                                                      
+                                                        <span> Log in</span> 
+                                                       
+                                                        </button> 
+
+                                                        }
                                                      
-                                                      </button> 
                                                     </div>
                                                   </form>
                                                   :
@@ -253,19 +359,7 @@ const LoginModal = ({setIsOpen}) => {
                                                  </div>
                                                 }
                                                 
-                                                   {/* {<span className="error ng-hide" ng-show="(emailLoginForm.password.$touched || emailLoginForm.$submitted) &amp;&amp; emailLoginForm.password.$invalid">password field is required</span>  } */}
-
-                                                   
-                                                  {/* <div className="form-group">
-                                                      <button type="submit" className="btn btn-outline-success btn-block btn-lg" ng-disabled="emailLoginForm.$invalid || !emailLoginBtnNotPressed" > <span ng-hide="!emailLoginBtnNotPressed"> Sign up/Log in</span> 
-                                                     
-                                                      </button> 
-                                                  </div> */}
-                                                  {/* <div>
-                                                      <a style={{marginRight:'30px'}} href='#'>Forgot Password?</a>
-                                                      <span>New Member? <a href="#">Register</a> here</span>
-                                                  </div> */}
-                                           {/* </form> */}
+                                             
                                         </div>
                                         :
                                           ShowPhone?
@@ -275,15 +369,14 @@ const LoginModal = ({setIsOpen}) => {
                                                     <div className="text-center p-3">
                                                         <p>PLEASE ENTER YOUR MOBILE PHONE NUMBER</p>
                                                     </div>
-                                                    {/* <span className={styles.error} show="(phoneLoginForm.phone.$touched || phoneLoginForm.$submitted)&amp;&amp;phoneLoginForm.phone.$error.required">phone number is required</span>
-                                                        <span className="error ng-hide" ng-show="(phoneLoginForm.phone.$touched || phoneLoginForm.$submitted)&amp;&amp;phoneLoginForm.phone.$error.pattern">Please enter a valid bangladeshi number. e.g. 01612793518</span>  */}
+                                                   
                                                 {errors.userName && <span className={styles.error}>Required valid Phone Number</span>}
                                                 <div className="input-group mb-3">
                                                     
                                                      <div className="input-group-prepend">
                                                           <div className="input-group-text"> +88 </div>
                                                        </div>
-                                                       <input ref={register({required: true,  pattern:/^(01\d{9})$/})} value={phoneNum[0]}  type="number" pattern="^(01\d{9})$" className="form-control form-control-lg" name="userName" placeholder="e.g 01612793518"  required=""/> 
+                                                       <input ref={register({required: true,  pattern:/^(01\d{9})$/})} value={phoneNum[0]}  type="number"  className="form-control form-control-lg" name="contactNumber" placeholder="e.g 01612793518"  required=""/> 
                                                       
                                                    </div>
                                                    
@@ -306,7 +399,7 @@ const LoginModal = ({setIsOpen}) => {
                                           <div  className="">
                                           <form  onSubmit={handleSubmit(phoneOtpSubmit)} name="otpForm" className="ng-pristine ng-invalid ng-invalid-required">
                                                 <div className="text-center p-3"> 
-                                                   <p className=""> We’ve sent a 4-digit one time PIN to your phone: {phoneNum.userName}</p>
+                                                   <p className=""> We’ve sent a 4-digit one time PIN to your phone: {phoneNum.contactNumber}</p>
                                                  </div>
                                                  {errors.otp && <span className={styles.error}>Required OTP</span>}
 
@@ -324,10 +417,8 @@ const LoginModal = ({setIsOpen}) => {
                                                         <button  type="submit" className="btn btn-success btn-lg" style={{fontSize:"17px",marginRight:'5px'}}   > 
                                                             <span>ENTER</span>
                                                         </button>
-                                                        <button type="button" className="btn btn-secondary btn-lg" style={{fontSize:"17px"}}> 
-                                                            {/* { <span ng-show="isResend" className="ng-binding ng-hide">Request PIN Again(99)</span>  } */}
-                                                            <span ng-show="!isResend">SEND AGAIN</span>
-                                                        </button>
+                                                        {<Timer/>}
+                                                       
                                                  </div>
                                              </form>
                                          </div> 

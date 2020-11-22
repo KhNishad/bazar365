@@ -148,3 +148,8 @@ span.error{
     color:red;
     padding:0px 15px;
   }
+  .forgotPass:hover{
+      font-size: 20px;
+      cursor: pointer;
+      color:  #7CA739;
+  }
